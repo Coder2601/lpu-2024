@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Learning DOM Manipulation</h1>
+
+
+    <table id="tableData" style="border: 2px solid black;">
+        <tr style="border: 2px solid black;">
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+        
+    </table>
+
+    <script>
+
+        // let arr = [1,2,3,4];
+        // arr.map(Element=>{
+        //     console.log(Element);
+        // })
+
+
+        // let myObj = {
+        //     message:"Welcome to the circus.",
+        //     show:"Elephant dance."
+        // }
+
+        // let allKeys = Object.keys(myObj);
+        // console.log(allKeys);
+        
+        // for (let key in myObj) {
+        //     console.log(`${key} = ${myObj[key]} `);
+        // }
+
+        // let a;  //declaring a var (Global Variable)
+        // Named Func
+        // function printHello(){
+        //     a = 5;   //defining a var (locally accessible variable)
+        //     return "Hello"
+        // }
+
+
+
+        // ___________________HOISTING___________________
+        // var x;
+
+        // console.log(x);
+        // x = 10;
+
+
+
+        // console.log(a);
+        // console.log(printHello());
+
+        // ___________________Anonymous Func___________________
+
+        // let myFunc = function(){
+        //     return "I am Anonymous"
+        // }
+
+        // console.log(myFunc());
+
+
+        // ___________________ARROW FUNC___________________
+        // const arrowFunc = ()=>10+5*78+" hello"
+
+        // console.log(arrowFunc());
+
+
+        // HIGHER ORDER FUNC
+        // function a(){
+        //     console.log("A");
+        // }
+        
+        // function all(x){
+        //     return x();
+        // }
+
+        // all(a);
+
+
+
+        // console.log("Welcome to the world of magic.");
+
+        // const xyz = ()=>{
+        //     console.log("Show will begin in 5 Seconds.");
+        // }
+
+        // ___________________TIMEOUT FUNCTIONS___________________
+
+        // setTimeout(()=>{
+        //     console.log("Show will begin in 5 Seconds.");
+        // }, 5000);
+
+        // setTimeout(()=>{
+        //     console.log("Ta Da! It's a rabbit in Hat!!");
+        // },2000)
+
+        // ___________________CALLBACK HELL / PYRAMID OF DOOM___________________
+
+        // setTimeout(()=>{
+        //     console.log("Show will begin in 5 Seconds.");
+        //     setTimeout(()=>{
+        //         console.log("Ta Da! It's a rabbit in Hat!!");
+        //             setTimeout(()=>{
+        //                 console.log("Ta Da! It's a rabbit in Hat!!");
+        //                 setTimeout(()=>{
+        //                     console.log("Ta Da! It's a rabbit in Hat!!");
+        //             },2000)
+        //         },2000)
+        //     },2000)
+        // },5000)
+
+
+
+        // ___________________PROMISES___________________
+        // let msg = "There's a meeting in 5secs today."
+        // let count = 8;
+
+//         let myPromise = new Promise((resolve,reject)=>{
+//          console.log(msg)
+//            setTimeout(()=>{
+//                
+//                if(count > 10){
+//                resolve("Meeting successful!!");
+                
+//                }else{
+//                reject("Meeting Cancelled!!")
+//            }
+//            console.log(myPromise);
+//            },5000);
+            
+//        })
+//        .then((val)=>console.log(val))
+//        .catch(err=>console.error(err))
+
+ //       console.log(myPromise);
+
+
+
+        // const fetchApi = async()=>{
+        //     let response = await fetch("http://localhost:5000/users");
+        //     // resolve Promise using AWAIT keyword
+        //     let result = response.json();
+        //     // parse the response to JSON data
+        //     // resolve Promise using AWAIT keyword
+        //     let content = await result;
+        //     let finalData = content.data;
+
+        //     let table = document.getElementById("tableData");
+        //     let op = finalData.map(item=>{
+        //         table.innerHTML = `<tr>${item.id}</tr>`
+        //     })
+
+        // }
+        
+        // fetchApi();
+
+
+
+        function a(){
+            var x = 10;
+            console.log("Hello from a");
+            return x;
+        }
+
+        function b(n){
+            console.log("Hello from b");
+            return n()+20;
+        }
+        
+        b(a);
+        a();
+
+
+    </script>
+</body>
+</html>
