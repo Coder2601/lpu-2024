@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
-const userRoutes = require("./modules/userModules")
+const userRoutes = require("./modules/userModules");
+const bcrypt = require("bcrypt");
+const encRoutes = require("./modules/hashingPwd");
 
 //importing express
 
@@ -11,6 +13,8 @@ server.use(express.json());
 server.use(cors());
 
 server.use('/allUserData',userRoutes);
+
+server.use('/enc',encRoutes);
 
 
 server.get('/',(req,res)=>{ 
