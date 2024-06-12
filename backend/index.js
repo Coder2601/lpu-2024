@@ -1,8 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const userRoutes = require("./modules/userModules");
-const bcrypt = require("bcrypt");
 const encRoutes = require("./modules/hashingPwd");
+const loginRoutes = require("./modules/signup-login")
 
 //importing express
 
@@ -13,9 +13,8 @@ server.use(express.json());
 server.use(cors());
 
 server.use('/allUserData',userRoutes);
-
 server.use('/enc',encRoutes);
-
+server.use('/vloggers',loginRoutes);
 
 server.get('/',(req,res)=>{ 
     res.send("Welcome to LPU")
