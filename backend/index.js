@@ -2,7 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const userRoutes = require("./modules/userModules");
 const encRoutes = require("./modules/hashingPwd");
-const loginRoutes = require("./modules/signup-login")
+const loginRoutes = require("./modules/signup-login");
+const middlRoutes = require("./modules/middlewares")
 
 //importing express
 
@@ -15,6 +16,7 @@ server.use(cors());
 server.use('/allUserData',userRoutes);
 server.use('/enc',encRoutes);
 server.use('/vloggers',loginRoutes);
+server.use('/middlewares',middlRoutes)
 
 server.get('/',(req,res)=>{ 
     res.send("Welcome to LPU")
