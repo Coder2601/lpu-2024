@@ -6,17 +6,43 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Learning DOM Manipulation</h1>
 
 
-    <table id="tableData" style="border: 2px solid black;">
+    <h2>SignUp Form</h2>
+    <form>
+        <label>Name :</label>
+        <input onchange="inputs(event)" id="name" placeholder="Enter Name here" type="text" />
+        <br/>
+        <label>Block :</label>
+        <input onchange="inputs(event)" id="block" placeholder="Enter Block here" type="text" />
+        <br/>
+        <button onclick="signup(event)">Sign Up</button>
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <h1>Learning DOM Manipulation</h1> -->
+
+
+    <!-- <table id="tableData" style="border: 2px solid black;">
         <tr style="border: 2px solid black;">
             <th>Id</th>
             <th>Name</th>
             <th>Age</th>
         </tr>
-        
-    </table>
+        <tr id="row1"></tr>
+        <tr id="row2"></tr>
+        <tr id="row3"></tr>
+    </table> -->
 
     <script>
 
@@ -145,7 +171,7 @@
 
 
         // const fetchApi = async()=>{
-        //     let response = await fetch("http://localhost:5000/users");
+        //     let response = await fetch("http://localhost:5000/allUserData/users");
         //     // resolve Promise using AWAIT keyword
         //     let result = response.json();
         //     // parse the response to JSON data
@@ -153,9 +179,17 @@
         //     let content = await result;
         //     let finalData = content.data;
 
-        //     let table = document.getElementById("tableData");
-        //     let op = finalData.map(item=>{
-        //         table.innerHTML = `<tr>${item.id}</tr>`
+        //     let op = finalData.map((item,index)=>{
+        //         if(index==0){
+        //             let row = document.getElementById("row1")
+        //             row.innerHTML = `<td>${item.id}</td><td>${item.name}</td><td>${item.age}</td>`
+        //         }else if(index==1){
+        //             let row = document.getElementById("row2")
+        //             row.innerHTML = `<td>${item.id}</td><td>${item.name}</td><td>${item.age}</td>`
+        //         }else{
+        //             let row = document.getElementById("row3")
+        //             row.innerHTML = `<td>${item.id}</td><td>${item.name}</td><td>${item.age}</td>`
+        //         }
         //     })
 
         // }
@@ -164,21 +198,24 @@
 
 
 
-        function a(){
-            var x = 10;
-            console.log("Hello from a");
-            return x;
-        }
+        // function a(){
+        //     var x = 10;
+        //     console.log("Hello from a");
+        //     return x;
+        // }
 
-        function b(n){
-            console.log("Hello from b");
-            return n()+20;
-        }
+        // function b(n){
+        //     console.log("Hello from b");
+        //     return n()+20;
+        // }
         
-        b(a);
-        a();
+        // b(a);
+        // a();
 
 
     </script>
+
+
+    <script src="main.js"></script>
 </body>
 </html>
