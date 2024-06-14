@@ -4,6 +4,7 @@ const userRoutes = require("./modules/userModules");
 const encRoutes = require("./modules/hashingPwd");
 const loginRoutes = require("./modules/signup-login");
 const middlRoutes = require("./modules/middlewares")
+const authRoutes = require("./modules/tokens");
 
 //importing express
 
@@ -17,6 +18,8 @@ server.use('/allUserData',userRoutes);
 server.use('/enc',encRoutes);
 server.use('/vloggers',loginRoutes);
 server.use('/middlewares',middlRoutes)
+server.use('/auth',authRoutes);
+
 
 server.get('/',(req,res)=>{ 
     res.send("Welcome to LPU")

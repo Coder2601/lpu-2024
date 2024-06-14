@@ -21,6 +21,33 @@ let vloggers = [
     }
   ];
 
+
+const authenticate = async (req,res,next)=>{
+    let data = req.body;
+    let x = vloggers.filter(item=>item.id==data.id);
+
+    if(x.length != 0 ){
+        if(x[0].name == data.name){
+            let results = await bcrypt.compare(data.password,x[0].encPass)
+        
+            if(results){
+                req.body = {msg:"Login Successful"};
+                next();
+            }
+            else{
+                req.body={msg:"Wrong Password"}
+                next();
+            }
+        }else{
+            req.body= {msg:"Enter the correct name"}
+            next();
+        }
+
+    }else{
+        req.body = {msg:"User not found!"}
+    }
+}
+
 loginRoutes.get('/allVloggers',(req,res)=>{
     res.json({data:vloggers})
 })
@@ -39,27 +66,8 @@ loginRoutes.post("/signup",async(req,res)=>{
 })
 
 
-loginRoutes.post('/login',async(req,res)=>{
-    let data = req.body;
-    let x = vloggers.filter(item=>item.id==data.id);
-
-    if(x.length != 0 ){
-        if(x[0].name == data.name){
-            let results = await bcrypt.compare(data.password,x[0].encPass)
-        
-            if(results){
-                res.json({msg:"Login Successful"})
-            }
-            else{
-                res.json({msg:"Wrong Password"})
-            }
-        }else{
-            res.send("Enter the correct name")
-        }
-
-    }else{
-        res.send("User not found!")
-    }
+loginRoutes.post('/login',authenticate,(req,res)=>{
+    res.send(req.body)
 })
 
 
