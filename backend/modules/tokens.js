@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const blogs = require("./blogsData");
 
-let refreshTokens=[];
+let refreshTokens=["eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ODU5LCJuYW1lIjoiS2lyYW4iLCJwYXNzd29yZCI6ImFzZGZnIiwiaWF0IjoxNzE4MzM5NzU5LCJleHAiOjE3MTg0MjYxNTl9.JhzZ5a4zsz-cZe6ZQ8LvDO7HfIBAMfW6Izsq63i4ZWs"];
 
 
 
@@ -30,7 +30,32 @@ authRoutes.post('/login',(req,res)=>{
     })
 })
 
-authRoutes.post('/blogs/:id',(req,res)=>{
+
+authRoutes.post('/newToken/:refToken',(req,res)=>{
+    let reftoken = req.params.refToken;
+
+    let results = refreshTokens.includes(reftoken)
+    console.log(results);
+
+    try {
+        let response = jwt.verify(reftoken,process.env.REFRESH_SECRET_KEY)
+        
+        console.log(response);
+
+        let newAccessToken = generateAccessToken({id:response.id})
+        
+        res.status(200).json({msg:"Refresh token is valid",
+        accessToken:newAccessToken})
+
+    } catch (error) {
+        res.status(400).json({msg:error})
+    }
+
+})
+
+
+
+authRoutes.post('/blogs',(req,res)=>{
     let token = req.body.token;
     try{
         let results = jwt.verify(token, process.env.SECURITY_KEY)
