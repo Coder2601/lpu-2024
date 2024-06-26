@@ -29,10 +29,15 @@ async function register(event){
         headers:{'Content-type':'application/json'},
         body: JSON.stringify(userObj)
     })
-    
-    // const response = await result;
-    // const data = await response.json();
-    console.log(result);
-    // alert("Registration Successful");
-    // window.location.href = 'login.html';
+
+    let response  = await result.json();
+    console.log(response);
+
+    if(response.status){
+        alert(response.msg);
+        window.location.href = 'login.html';
+    }else{
+        alert("Regsitration Failed, Try Again");
+        window.location.href = 'register.html';
+    }
 }
