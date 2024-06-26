@@ -11,4 +11,14 @@ async function validateToken(){
 
     let result = await response.json();
     console.log(result);
+
+
+    if(result.status){
+        if(result.data.length <= 0){
+            document.getElementById("msg").innerHTML = `If there are no posts to display, create a new post by <a href="create-post.html">clicking here</a>.`
+        }
+    }else{
+        alert(result.msg);
+        window.location.href = "login.html"
+    }
 }
