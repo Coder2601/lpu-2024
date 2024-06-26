@@ -2,18 +2,24 @@ const express = require("express");
 const authRoute = express.Router();
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const postModel = require("../models/postModel");
 
-authRoute.get('/validateToken', (req,res)=>{
+authRoute.get('/validateToken', async (req, res) => {
     let authHeaders = req.headers.authorization;
 
     let token = authHeaders && authHeaders.split(" ")[1];
 
-    console.log(token);
+    try {
+        let result = jwt.verify(token, process.env.ACCESS_SECRET_KEY)
+        console.log(result);
 
-    let result = jwt.verify(token, process.env.ACCESS_SECRET_KEY)
-    console.log(result);
+        let postData = await postModel.find();
 
-    res.json({msg:"Validating Token"})
+        res.json({ result: result, data: postData, status: true })
+    } 
+    catch (error) {
+        res.json({msg:"Session Expired", status: false})
+    }
 
 })
 
