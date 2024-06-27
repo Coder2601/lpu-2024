@@ -11,7 +11,7 @@ authRoute.get('/validateToken', async (req, res) => {
 
     try {
         let result = jwt.verify(token, process.env.ACCESS_SECRET_KEY)
-        console.log(result);
+        // console.log(result);
 
         let postData = await postModel.find();
 
