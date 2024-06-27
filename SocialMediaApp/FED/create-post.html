@@ -7,22 +7,21 @@
 </head>
 <body>
     <h3>Create a new Post</h3>
-    <br>
     <hr>
     <br>
     <form>
         <label for="title">Title</label>
         <input type="text" placeholder="title" id="title" onchange="handleInput(event)" required>
-        <br>
+        <br><br>
         <label for="content">Content</label>
-        <input type="text" placeholder="content" id="content" onchange="handleInput(event)" required>
-        <br>
+        <textarea type="text" placeholder="content" id="content" onchange="handleInput(event)" required></textarea>
+        <br><br>
         <label for="date">Created On : </label>
         <input type="date" placeholder="created On" id="created_On" onchange="handleInput(event)" required>
-        <br>
+        <br><br>
         <label for="author">Author</label>
         <input type="text" placeholder="author name" id="author" onchange="handleInput(event)" required>
-        <br>
+        <br><br>
         <label for="category">Category</label>
         <select id="category" onchange="handleInput(event)" required>
             <option value="movie">Movie</option>
@@ -32,8 +31,8 @@
             <option value="news">News</option>
             <option value="tourist-places">Tourist Places</option>
         </select>
-        <br>
-        <button onclick="createPost()">Create Post</button>
+        <br><br>
+        <button onclick="createPost(event)">Create Post</button>
     </form>
 
     <script src="create-post.js"></script>
