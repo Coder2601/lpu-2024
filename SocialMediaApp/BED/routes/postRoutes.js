@@ -1,6 +1,8 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
 const postRoutes = express.Router();
+const postModel = require("../models/postModel");
+
 require("dotenv").config();
 
 function validateToken(req,res,next){
@@ -28,6 +30,9 @@ postRoutes.post('/createPost',validateToken,async(req,res)=>{
     else{
         let postData = req.body.data;
         console.log(postData);
+
+        const post = new postModel({...postData});
+        await post.save();
 
         res.json({msg:"Saving the post data..."})
     }
