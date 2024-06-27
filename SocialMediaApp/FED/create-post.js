@@ -19,4 +19,29 @@ async function createPost(event){
 
     let result = await response.json();
     console.log(result);
+    
+    if(!result.status){
+        alert(result.msg);
+        window.location.href = "login.html"
+    }else{
+        window.location.href= "view-posts.html"
+    }
+}
+
+async function validateToken(){
+    let response = await fetch("http://localhost:5000/socialMedia/authToken/validate",{
+        method:"GET",
+        headers:{
+            'Content-type':"application/json",
+            'Authorization':`Basic ${token}`
+        }
+    })
+
+    let result = await response.json();
+    console.log(result);
+
+    if(!result.status){
+        alert(result.msg);
+        window.location.href = "login.html"
+    }
 }
