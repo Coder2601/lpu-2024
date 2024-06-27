@@ -23,4 +23,16 @@ authRoute.get('/validateToken', async (req, res) => {
 
 })
 
+authRoute.get("/validate",(req,res)=>{
+    let authHeaders = req.headers.authorization;
+    let token = authHeaders && authHeaders.split(" ")[1];
+
+    try {
+        let result = jwt.verify(token, process.env.ACCESS_SECRET_KEY);
+        res.json({msg:"Session Valid", status:true, data:result.user_name})
+    } catch (error) {
+        res.json({msg:"Session Expired", status:false})
+    }
+})
+
 module.exports = authRoute;

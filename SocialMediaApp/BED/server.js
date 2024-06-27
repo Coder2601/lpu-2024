@@ -16,4 +16,4 @@ app.use('/socialMedia/user',userRoutes);
 app.use('/socialMedia/authToken', authRoutes);
 app.use('/socialMedia/posts', postRoutes);
 
-app.listen(PORT,()=>console.log(`Sever is running at port: ${PORT}`))
+app.listen(PORT,()=>console.log(`Server is running at port: ${PORT}`))

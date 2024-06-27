@@ -34,7 +34,7 @@ postRoutes.post('/createPost',validateToken,async(req,res)=>{
         const post = new postModel({...postData});
         await post.save();
 
-        res.json({msg:"Saving the post data..."})
+        res.json({msg:"Saving the post data...", status:true})
     }
 })
 
