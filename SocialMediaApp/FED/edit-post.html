@@ -14,14 +14,9 @@
         <label for="content">Content</label>
         <textarea type="text" placeholder="content" id="content" onchange="handleInput(event)" required></textarea>
         <br><br>
-        <label for="date">Created On : </label>
-        <input type="date" placeholder="created On" id="created_On" onchange="handleInput(event)" required>
-        <br><br>
-        <label for="author">Author</label>
-        <input type="text" placeholder="author name" id="author" onchange="handleInput(event)" required>
-        <br><br>
         <label for="category">Category</label>
         <select id="category" onchange="handleInput(event)" required>
+            <option value="select">Select Category</option>
             <option value="movie">Movie</option>
             <option value="song">Song</option>
             <option value="web-series">Web Series</option>
