@@ -68,4 +68,17 @@ postRoutes.delete('/deletePost/:id',async(req,res)=>{
 
 })
 
+postRoutes.get('/getPost/:id',async(req,res)=>{
+    let postData = await postModel.findById(req.params.id);
+
+    // console.log(postData);
+    // res.json({msg:"Finding posts"});
+
+    if(postData){
+        res.json({data:postData, status:true})
+    }else{
+        res.json({msg:"Error in finding the Post", status:false})
+    }
+})
+
 module.exports = postRoutes;
