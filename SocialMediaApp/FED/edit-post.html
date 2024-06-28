@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post | Social Media</title>
+</head>
+<body onload="handlePostData()">
+    <h2>Edit the post Data : </h2>
+    <form>
+        <label for="title">Title</label>
+        <input type="text" placeholder="title" id="title" onchange="handleInput(event)" required>
+        <br><br>
+        <label for="content">Content</label>
+        <textarea type="text" placeholder="content" id="content" onchange="handleInput(event)" required></textarea>
+        <br><br>
+        <label for="date">Created On : </label>
+        <input type="date" placeholder="created On" id="created_On" onchange="handleInput(event)" required>
+        <br><br>
+        <label for="author">Author</label>
+        <input type="text" placeholder="author name" id="author" onchange="handleInput(event)" required>
+        <br><br>
+        <label for="category">Category</label>
+        <select id="category" onchange="handleInput(event)" required>
+            <option value="movie">Movie</option>
+            <option value="song">Song</option>
+            <option value="web-series">Web Series</option>
+            <option value="games">Games</option>
+            <option value="news">News</option>
+            <option value="tourist-places">Tourist Places</option>
+        </select>
+        <br><br>
+        <button onclick="editPost(event)">Submit Changes</button>
+    </form>
+
+    <script src="edit-post.js"></script>
+</body>
+</html>

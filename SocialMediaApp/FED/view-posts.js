@@ -1,6 +1,5 @@
 let container = document.getElementById("post-container");
 
-
 async function validateToken() {
     let token = localStorage.getItem("token");
 
@@ -13,7 +12,7 @@ async function validateToken() {
     })
 
     let result = await response.json();
-    console.log(result);
+    // console.log(result);
 
 
     if (result.status) {
@@ -68,7 +67,7 @@ async function handleAuthorPost(event) {
             headers: { 'Content-type': 'application/json' }
         })
         let result = await response.json();
-        console.log(result);
+        // console.log(result);
 
         if (result.status) {
             container.innerHTML = ""
@@ -110,11 +109,11 @@ async function handleAuthorPost(event) {
 function editPost(id){
     localStorage.setItem("editpostId", id);
     window.location.href = "edit-post.html";
-    console.log(id);
+    // console.log(id);
 }
 
 async function deletePost(id){
-    console.log(id);
+    // console.log(id);
 
     let response = await fetch(`http://localhost:5000/socialMedia/posts/deletePost/${id}`,{
         method:"DELETE",
@@ -122,7 +121,7 @@ async function deletePost(id){
     })
 
     let result = await response.json();
-    console.log(result);
+    // console.log(result);
 
     if(result.status){
         alert(result.msg);
