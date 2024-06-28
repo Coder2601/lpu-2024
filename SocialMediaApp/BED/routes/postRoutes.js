@@ -55,4 +55,17 @@ postRoutes.get('/author/:authorName', async (req, res) => {
 
 })
 
+postRoutes.delete('/deletePost/:id',async(req,res)=>{
+    let postId = req.params.id;
+
+    let postData = await postModel.findByIdAndDelete(postId);
+    
+    if(postData.length<=0){
+        res.json({msg:"No such Post exists.", status:false})
+    }else{
+        res.json({msg:"Post Deleted Successfuly", status: true})
+    }
+
+})
+
 module.exports = postRoutes;
