@@ -40,7 +40,7 @@ postRoutes.post('/createPost', validateToken, async (req, res) => {
 
 postRoutes.get('/author/:authorName', async (req, res) => {
     let authorName = req.params.authorName;
-    
+
     try {
         let posts = await postModel.find({ author: authorName });
 
@@ -50,34 +50,70 @@ postRoutes.get('/author/:authorName', async (req, res) => {
             res.json({ msg: "No Such Author Found, try another author", status: false })
         }
     } catch (error) {
-        res.json({msg:"Error is finding the author, Try another author", status: false})
+        res.json({ msg: "Error is finding the author, Try another author", status: false })
     }
 
 })
 
-postRoutes.delete('/deletePost/:id',async(req,res)=>{
+postRoutes.delete('/deletePost/:id', async (req, res) => {
     let postId = req.params.id;
 
     let postData = await postModel.findByIdAndDelete(postId);
-    
-    if(postData.length<=0){
-        res.json({msg:"No such Post exists.", status:false})
-    }else{
-        res.json({msg:"Post Deleted Successfuly", status: true})
+
+    if (postData.length <= 0) {
+        res.json({ msg: "No such Post exists.", status: false })
+    } else {
+        res.json({ msg: "Post Deleted Successfuly", status: true })
     }
 
 })
 
-postRoutes.get('/getPost/:id',async(req,res)=>{
-    let postData = await postModel.findById(req.params.id);
+postRoutes.get('/getPost/:id', async (req, res) => {
 
-    // console.log(postData);
-    // res.json({msg:"Finding posts"});
+    let authHeaders = req.headers.authorization;
+    let token = authHeaders && authHeaders.split(" ")[1];
 
-    if(postData){
-        res.json({data:postData, status:true})
-    }else{
-        res.json({msg:"Error in finding the Post", status:false})
+    try {
+        let result = jwt.verify(token, process.env.ACCESS_SECRET_KEY);
+
+        let postData = await postModel.findById(req.params.id);
+
+        // console.log(postData);
+        // res.json({msg:"Finding posts"});
+
+        if (postData) {
+            res.json({ data: postData, status: true })
+        } else {
+            res.json({ msg: "Error in finding the Post", status: false })
+        }
+
+
+    } catch (error) {
+        res.json({msg:"Unauthorised Access, Login Again", status:false})
+    }
+
+
+})
+
+postRoutes.put('/editPost/:id',async(req,res)=>{
+    let authHeaders = req.headers.authorization;
+    let token = authHeaders && authHeaders.split(" ")[1];
+    let postData = req.body;
+    let postId = req.params.id
+
+    try {
+        let result = jwt.verify(token, process.env.ACCESS_SECRET_KEY);
+
+        let responseData = await postModel.findByIdAndUpdate(postId, postData, {new:true})
+        
+        if(responseData){
+            res.json({msg:"Data Updated successfully", status:true})
+        }else{
+            res.json({msg:"Error in Updating the data", status:false})
+        }        
+    }
+    catch(error){
+        res.json({msg:"Unauthorised Access", status:false})
     }
 })
 
