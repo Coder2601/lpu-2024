@@ -39,8 +39,8 @@ async function validateToken() {
                     <p><b>Created On: </b> ${post.created_On}</p>
                 </span>
                 <br>
-                <button onclick ="editPost()">Edit</button>
-                <button onclick ="deletePost()">Delete</button>
+                <button onclick ="editPost('${post._id}')">Edit</button>
+                <button onclick ="deletePost('${post._id}')">Delete</button>
                 `;
 
                 container.appendChild(div);
@@ -90,8 +90,8 @@ async function handleAuthorPost(event) {
                 <p><b>Created On: </b> ${post.created_On}</p>
             </span>
             <br>
-            <button onclick ="editPost()">Edit</button>
-            <button onclick ="deletePost()">Delete</button>
+            <button onclick ="editPost('${post._id}')">Edit</button>
+            <button onclick ="deletePost('${post._id}')">Delete</button>
             `;
 
                 container.appendChild(div);
@@ -107,12 +107,28 @@ async function handleAuthorPost(event) {
 }
 
 
-function editPost(){
-    // localStorage.setItem("EditpostId", id);
-    // window.location.href = "edit-post.html";
-    console.log("edit");
+function editPost(id){
+    localStorage.setItem("editpostId", id);
+    window.location.href = "edit-post.html";
+    console.log(id);
 }
 
-function deletePost(){
-    console.log("dele");
+async function deletePost(id){
+    console.log(id);
+
+    let response = await fetch(`http://localhost:5000/socialMedia/posts/deletePost/${id}`,{
+        method:"DELETE",
+        headers:{'Content-type':'application/json'}
+    })
+
+    let result = await response.json();
+    console.log(result);
+
+    if(result.status){
+        alert(result.msg);
+        window.location.reload();
+    }else{
+        alert("There's some problem in deleting the post.");
+        window.location.reload();
+    }
 }
