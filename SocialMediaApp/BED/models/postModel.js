@@ -24,7 +24,8 @@ const postSchema = new mongoose.Schema({
     category:{
         type:String,
         required:true
-    }
+    },
+    likes:Array
 })
 
 const postModel = new mongoose.model("Post",postSchema);

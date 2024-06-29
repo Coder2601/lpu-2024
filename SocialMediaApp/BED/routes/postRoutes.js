@@ -16,7 +16,7 @@ function validateToken(req, res, next) {
 
     } catch (error) {
         // console.log(error);
-        req.body = { msg: "Session Expired", status: false }
+        res.json({ msg: "Session Expired", status: false })
     }
     next();
 
@@ -89,13 +89,13 @@ postRoutes.get('/getPost/:id', async (req, res) => {
 
 
     } catch (error) {
-        res.json({msg:"Unauthorised Access, Login Again", status:false})
+        res.json({ msg: "Unauthorised Access, Login Again", status: false })
     }
 
 
 })
 
-postRoutes.put('/editPost/:id',async(req,res)=>{
+postRoutes.put('/editPost/:id', async (req, res) => {
     let authHeaders = req.headers.authorization;
     let token = authHeaders && authHeaders.split(" ")[1];
     let postData = req.body;
@@ -104,17 +104,41 @@ postRoutes.put('/editPost/:id',async(req,res)=>{
     try {
         let result = jwt.verify(token, process.env.ACCESS_SECRET_KEY);
 
-        let responseData = await postModel.findByIdAndUpdate(postId, postData, {new:true})
-        
-        if(responseData){
-            res.json({msg:"Data Updated successfully", status:true})
-        }else{
-            res.json({msg:"Error in Updating the data", status:false})
-        }        
+        let responseData = await postModel.findByIdAndUpdate(postId, postData, { new: true })
+
+        if (responseData) {
+            res.json({ msg: "Data Updated successfully", status: true })
+        } else {
+            res.json({ msg: "Error in Updating the data", status: false })
+        }
     }
-    catch(error){
-        res.json({msg:"Unauthorised Access", status:false})
+    catch (error) {
+        res.json({ msg: "Unauthorised Access", status: false })
     }
+})
+
+postRoutes.get('/likePost/:postId/:userName', validateToken, async (req, res) => {
+    let postId = req.params.postId;
+    let userName = req.params.userName;
+
+    try {
+        let response = await postModel.findById(postId);
+
+        if(response.likes.includes(userName)){
+            res.json({msg:"Already Liked", status: false})
+        }
+        else{
+            response.likes.push(userName);
+            let result = await postModel.findByIdAndUpdate(postId, response, { new: true });
+            console.log(result);
+            res.json({data:result.likes.length,msg:"Likes Updated", status:true})
+        }
+
+    } catch (error) {
+        res.json({msg:"Error in updating Likes", status:false})
+    }
+
+
 })
 
 module.exports = postRoutes;

@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const db = mongoose.connect("mongodb+srv://divya:divya11@cluster0.noden2h.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+const db = mongoose.connect("mongodb+srv://divya:divya123456789@cluster0.noden2h.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 
 app.use('/socialMedia/user',userRoutes);
 app.use('/socialMedia/authToken', authRoutes);

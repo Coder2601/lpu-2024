@@ -15,7 +15,7 @@ authRoute.get('/validateToken', async (req, res) => {
 
         let postData = await postModel.find();
 
-        res.json({ result: result, data: postData, status: true })
+        res.json({ payload: result, data: postData, status: true })
     } 
     catch (error) {
         res.json({msg:"Session Expired", status: false})
