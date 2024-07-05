@@ -1,0 +1,25 @@
+.appContainer{
+    border:3px solid green;
+    background-color: bisque;
+    text-align: center;
+}
+
+/* button{
+    font-size: 50px;
+    border: 2px dotted cyan;
+    border-bottom: 1px;
+    border-radius: 50px;
+    width: 150px;
+} */
+
+.vals{
+    color: blue;
+}
+
+table, th, td{
+    border: 1px solid black;
+}
+
+th,td{
+    padding: 10px;
+}
