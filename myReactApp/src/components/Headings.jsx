@@ -7,7 +7,7 @@ let myStyle = {
 
 function Heading(){
     return (<>
-    <h1 style={myStyle}>Counter Value</h1>    {/* Internal Styling */}
+    <h1 style={myStyle}>Heading</h1>    {/* Internal Styling */}
 
     <p id="" className="" >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam sit beatae eaque.</p>
     <h2 style={myStyle}>Sub-Heading</h2>

@@ -1,8 +1,10 @@
 // import Button from './components/classBasedButton';
 // import {Game, Heading} from './components/Headings';
 import './App.css'
+import Bio from './components/Bio';
+import Eligible from './components/conditionalRendering';
 // import Play from './components/eventHandler';
-import Counter from './components/Counter';
+// import Counter from './components/Counter';
 
 function App() {
   return (
@@ -13,7 +15,9 @@ function App() {
         <Button /> */}
         {/* <Play/> */}
         
-        <Counter/>
+        {/* <Counter/> */}
+        <Bio />
+        {/* <Eligible /> */}
 
       </div>
     </>
