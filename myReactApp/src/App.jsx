@@ -5,6 +5,7 @@ import Bio from './components/Bio';
 import Eligible from './components/conditionalRendering/Eligible';
 import Main from './components/conditionalRendering/Main';
 import ChangeCounter from './components/props/ChangeCounter';
+import TodoData from './components/TodoList/TodoData';
 // import Play from './components/eventHandler';
 // import Counter from './components/Counter';
 
@@ -21,7 +22,8 @@ function App() {
         {/* <Bio /> */}
         {/* <Eligible /> */}
         {/* <Main/> */}
-        <ChangeCounter/>
+        {/* <ChangeCounter/> */}
+        <TodoData/>
 
       </div>
     </>
