@@ -2,7 +2,9 @@
 // import {Game, Heading} from './components/Headings';
 import './App.css'
 import Bio from './components/Bio';
-import Eligible from './components/conditionalRendering';
+import Eligible from './components/conditionalRendering/Eligible';
+import Main from './components/conditionalRendering/Main';
+import ChangeCounter from './components/props/ChangeCounter';
 // import Play from './components/eventHandler';
 // import Counter from './components/Counter';
 
@@ -16,8 +18,10 @@ function App() {
         {/* <Play/> */}
         
         {/* <Counter/> */}
-        <Bio />
+        {/* <Bio /> */}
         {/* <Eligible /> */}
+        {/* <Main/> */}
+        <ChangeCounter/>
 
       </div>
     </>
