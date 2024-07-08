@@ -9,6 +9,8 @@ import Lifecycle from './components/lifecycleMethods/Lifecycle';
 import ChangeCounter from './components/props/ChangeCounter';
 import TodoData from './components/TodoList/TodoData';
 import Pure from './components/lifecycleMethods/PureComponent';
+import MainBanner from './components/hoc/Banner';
+import MainPointer from './components/hoc/Pointer';
 // import Play from './components/eventHandler';
 // import Counter from './components/Counter';
 
@@ -35,7 +37,10 @@ function App() {
         <button onClick={()=>setDisplay(!display)}>{display?"Hide":"Show"}</button> */}
 
 
-        <Pure/>
+        {/* <Pure/> */}
+
+          <MainBanner />
+          <MainPointer />
 
       </div>
     </>
