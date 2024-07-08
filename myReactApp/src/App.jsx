@@ -1,15 +1,19 @@
 // import Button from './components/classBasedButton';
 // import {Game, Heading} from './components/Headings';
+import React, { useState } from 'react';
 import './App.css'
 import Bio from './components/Bio';
 import Eligible from './components/conditionalRendering/Eligible';
 import Main from './components/conditionalRendering/Main';
+import Lifecycle from './components/lifecycleMethods/Lifecycle';
 import ChangeCounter from './components/props/ChangeCounter';
 import TodoData from './components/TodoList/TodoData';
 // import Play from './components/eventHandler';
 // import Counter from './components/Counter';
 
 function App() {
+  const[display,setDisplay] = useState(true);
+
   return (
     <>
       <div className='appContainer'>
@@ -23,11 +27,26 @@ function App() {
         {/* <Eligible /> */}
         {/* <Main/> */}
         {/* <ChangeCounter/> */}
-        <TodoData/>
+        {/* <TodoData/> */}
+
+        {display?<Lifecycle/>:<Rooster/>}
+        
+        <button onClick={()=>setDisplay(!display)}>{display?"Hide":"Show"}</button>
 
       </div>
     </>
   )
+}
+
+
+export class Rooster extends React.Component{
+  render(){
+      return(
+          <>
+              <h2>Wake Up Kid!!</h2>
+          </>
+      )
+  }
 }
 
 export default App;
