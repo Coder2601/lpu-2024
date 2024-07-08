@@ -8,6 +8,7 @@ import Main from './components/conditionalRendering/Main';
 import Lifecycle from './components/lifecycleMethods/Lifecycle';
 import ChangeCounter from './components/props/ChangeCounter';
 import TodoData from './components/TodoList/TodoData';
+import Pure from './components/lifecycleMethods/PureComponent';
 // import Play from './components/eventHandler';
 // import Counter from './components/Counter';
 
@@ -29,9 +30,12 @@ function App() {
         {/* <ChangeCounter/> */}
         {/* <TodoData/> */}
 
-        {display?<Lifecycle/>:<Rooster/>}
-        
-        <button onClick={()=>setDisplay(!display)}>{display?"Hide":"Show"}</button>
+        {/* {display?<Lifecycle/>:<Rooster/>}
+
+        <button onClick={()=>setDisplay(!display)}>{display?"Hide":"Show"}</button> */}
+
+
+        <Pure/>
 
       </div>
     </>
@@ -39,14 +43,10 @@ function App() {
 }
 
 
-export class Rooster extends React.Component{
-  render(){
-      return(
-          <>
-              <h2>Wake Up Kid!!</h2>
-          </>
-      )
-  }
+function Rooster(){
+  return(
+    <h2>Wake Up Kid!!</h2>
+  )
 }
 
 export default App;
