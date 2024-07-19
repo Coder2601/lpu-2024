@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Layout from '../Navbar/Layout'
 import { Outlet, useNavigate } from 'react-router-dom'
 import PostData from './PostData';
 import axios from 'axios'
+import { postContext } from '../contexts/PostContext';
 
 const ViewPosts = () => {
-  const[viewPost,setViewPost] = useState(true);
+  const{viewPost, setViewPost} = useContext(postContext)
   const[searchVal,setSearchVal] = useState();
   const[searchData, setSearchData] = useState([]);
   const[postData,setPostData] = useState([]);
@@ -26,7 +27,7 @@ const ViewPosts = () => {
     // }
     // fetchPosts();
     
-  },[searchData,postData])
+  },[searchData,postData,viewPost]);
   
   const nav = useNavigate();
 
@@ -76,7 +77,7 @@ const ViewPosts = () => {
       
       </>
       :
-      <Outlet/>}
+      <Outlet />}
     </Layout>
   )
 }

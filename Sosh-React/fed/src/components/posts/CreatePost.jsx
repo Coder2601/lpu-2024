@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { postContext } from '../contexts/PostContext';
 
 const CreatePost = () => {
-  
+  const{setViewPost} = useContext(postContext);
+
   useEffect(()=>{
     // auth token
   })
@@ -24,7 +26,9 @@ const CreatePost = () => {
     //   nav('/posts')
     // }
 
-    nav('/posts')
+    setViewPost(true);
+    nav('/posts');
+    
 
   }
   return (

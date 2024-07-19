@@ -8,6 +8,7 @@ import EditPosts from './components/posts/EditPosts';
 import CreatePost from './components/posts/CreatePost';
 import Register from './components/signups/Register';
 import LogContexts from './components/contexts/LogContexts';
+import PostContext from './components/contexts/PostContext';
 
 const App = () => {
   return (
@@ -19,9 +20,9 @@ const App = () => {
           <Route path='/admin/login' element={<LogContexts><AdminLogin /></LogContexts>} />
           <Route path='/user/register' element={<Register />} />
           {/* <Route path='/blogs' element={<Blogs/>} /> */}
-          <Route path='/posts' element={<ViewPosts />}>
-            <Route path='editPost' element={<EditPosts />} />
-            <Route path='createPost' element={<CreatePost />} />
+          <Route path='/posts' element={<PostContext><ViewPosts /></PostContext>}>
+            <Route path='editPost' element={<PostContext><EditPosts /></PostContext>} />
+            <Route path='createPost' element={<PostContext><CreatePost /></PostContext>} />
           </Route>
         </Routes>
       </Router>
